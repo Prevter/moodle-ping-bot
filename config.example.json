@@ -1,0 +1,23 @@
+{
+    "TOKEN": "<TELEGRAM_BOT_TOKEN>",
+    "CHANNEL_ID": "<CHANNEL FOR POSTS (@example)>",
+    "WEBSITE_URL": "https://elearn.nubip.edu.ua/",
+
+    "WorkingMessage": "🟢 Elearn працює нормально",
+    "SlowMessage": "🟡 Elearn працює повільно",
+    "DownMessage": "🔴 Elearn не працює",
+    "TechWorkMessage": "⚙️ Технічні роботи на Elearn",
+    "ErrorMessage": "❌ Elearn повернув невідому помилку\nМожливо помилка бази даних, зазвичай зникає миттєво.",
+    "SpecialErrorMessage": "❌ Elearn повернув помилку",
+    "StatusCodeMessage": "Код помилки: {0}",
+    "PingMessage": "Пінг: {0} мс",
+    "TimeMessage": "Оновлено: {0}",
+    "PassedTime": "Пройшло часу: {0}",
+    
+    "WorkingContent": "href=\"https://elearn.nubip.edu.ua/login/index.php\"",
+    "TechnicalWorksContent": "<img src=\"/custompix/techworks.png\">",
+    "CriticalPing": 6000,
+    "CheckInterval": 60000,
+    "RecheckTime": 10000,
+    "Timeout": 60000
+}
