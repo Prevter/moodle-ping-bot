@@ -130,7 +130,7 @@ const statusChanged = (result) => {
     else {
         if (last_message.status !== result.status) {
             // before changing status, edit old message to show how much time passed
-            bot.telegram.editMessageText(config.CHANNEL_ID, last_message.message_id, null, createMessage(result));
+            bot.telegram.editMessageText(config.CHANNEL_ID, last_message.message_id, null, createMessage(last_message));
 
             // then send new message
             last_message.status = result.status;
@@ -148,6 +148,7 @@ const statusChanged = (result) => {
     }
 }
 
+// checks status of website
 const check = () => {
     return new Promise((resolve, reject) => {
         let start = Date.now();
@@ -168,6 +169,7 @@ const check = () => {
                 };
 
                 if (response.statusCode === 200 && data.includes(config.WorkingContent)) {
+                    // site is online, but we need to check if it's slow
                     if (time > config.CriticalPing) {
                         returnObject.status = 'slow';
                     }
