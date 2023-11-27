@@ -200,6 +200,14 @@ const check = () => {
                 ping: 0
             });
         });
+
+        request.on('timeout', () => {
+            resolve({
+                status: 'offline',
+                statusCode: -1,
+                ping: 0
+            });
+        });
     });
 };
 
@@ -239,7 +247,7 @@ const retry = (result) => {
                 }
                 resolve();
             });
-        }, config.RetryInterval);
+        }, config.RecheckTime);
     });
 };
 
@@ -247,6 +255,7 @@ const retry = (result) => {
 const start = () => {
     check().then((result) => {
         if (result.status !== 'online' && result.status !== 'techwork') {
+            console.log(`Website is down, retrying in ${config.RecheckTime / 1000} seconds...`);
             retry(result).then(() => {
                 setTimeout(start, config.CheckInterval);
             });
